@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
+  const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const loader = useRef(null);
@@ -14,10 +14,10 @@ const App = () => {
       const response = await axios.get(
         `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=3`
       );
-      setPosts((prevPosts) => [
-        ...prevPosts,
+      setItems((prevItems) => [
+        ...prevItems,
         ...response.data.filter(
-          (newPost) => !prevPosts.some((post) => post.id === newPost.id)
+          (newItem) => !prevItems.some((item) => item.id === newItem.id)
         ),
       ]);
       if (response.data.length === 0 || response.data.length < 3) {
@@ -31,21 +31,21 @@ const App = () => {
 
   useEffect(() => {
     fetchMoreData();
-  }, []);
+  }, [fetchMoreData]);
 
   return (
     <div>
       <h1>Infinite Scroll with API Example</h1>
-      <div className='post-container'>
-        {posts.map((post) => (
-          <div key={post.id} className='post'>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
+      <div className='item-container'>
+        {items.map((item) => (
+          <div key={item.id} className='item'>
+            <h2>{item.title}</h2>
+            <p>{item.body}</p>
           </div>
         ))}
       </div>
       <div ref={loader} className='loading'>
-        {hasMore && <p>Loading more posts...</p>}
+        {hasMore && <p>Loading more items...</p>}
       </div>
       <InfiniteScroll
         fetchMoreData={fetchMoreData}

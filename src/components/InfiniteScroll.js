@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const InfiniteScroll = ({ fetchMoreData, hasMore, loader }) => {
   const [isFetching, setIsFetching] = useState(false);
