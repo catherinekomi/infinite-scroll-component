@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates a reusable Infinite Scroll component using React and JavaScript. The component dynamically fetches and displays data from an API as the user scrolls down the page. It leverages modern React features such as hooks (`useState`, `useEffect`, and `useRef`) and the Intersection Observer API to implement the infinite scrolling functionality.
+This project demonstrates a reusable Infinite Scroll component using React and JavaScript. The component dynamically fetches and displays data from an API as the user scrolls down the page. It leverages modern React features such as hooks (`useState`, `useEffect`, and `useRef`).
 
 ## Features
 
